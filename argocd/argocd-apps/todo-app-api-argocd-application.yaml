@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: todo-app-api-argocd-application
-  namespace: app-ci-cd
+  namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
