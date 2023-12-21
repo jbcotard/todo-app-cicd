@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: todo-app-argocd-application
+  namespace: argocd
+spec:
+  destination:
+    namespace: app-ci-cd
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: argocd/argocd-apps
+    repoURL: 'https://github.com/jbcotard/todo-app-cicd.git'
+    targetRevision: HEAD
+  project: todo-app-gitops
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

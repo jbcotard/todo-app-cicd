@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: todo-app-api-argocd-application
+  namespace: app-ci-cd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: app
+    server: https://kubernetes.default.svc
+  project: todo-app-gitops
+  source:
+    repoURL: https://github.com/jbcotard/todo-app-helm-chart.git
+    targetRevision: HEAD

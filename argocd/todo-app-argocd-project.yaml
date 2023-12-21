@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: todo-app-gitops
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Project for Todo App
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: app-ci-cd
+    server: https://kubernetes.default.svc
